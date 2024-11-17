@@ -13,8 +13,10 @@ import (
 
 // Map of structs keyed by file name
 var fileStructMap = map[string]interface{}{
-	"teams.csv":   entity.Teams{},
-	"players.csv": entity.Players{},
+	"teams.csv":         entity.Teams{},
+	"players.csv":       entity.Players{},
+	"players_draft.csv": &entity.PlayersDraft{},
+	"team_details.csv":  &entity.TeamsDetails{},
 }
 
 func main() {
@@ -71,6 +73,22 @@ func main() {
 					fmt.Printf("Error inserting player into DB: %v\n", err)
 				} else {
 					fmt.Printf("Successfully inserted player: %s\n", v.PlayerName)
+				}
+			case *entity.PlayersDraft:
+				// Insert Player data
+				err := database.InsertPlayersDraft(db, *v)
+				if err != nil {
+					fmt.Printf("Error inserting player into DB: %v\n", err)
+				} else {
+					fmt.Printf("Successfully inserted players draft: %s\n", v.PlayerName)
+				}
+			case *entity.TeamsDetails:
+				// Insert Player data
+				err := database.InsertTeamDetails(db, *v)
+				if err != nil {
+					fmt.Printf("Error inserting player into DB: %v\n", err)
+				} else {
+					fmt.Printf("Successfully inserted team details:")
 				}
 			default:
 				fmt.Println("Unknown type for insertion")

@@ -10,6 +10,20 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="/assets/players_draft.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/assets/team_details.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="/assets/teams.csv">
           <value>
             <Attribute>

@@ -13,8 +13,10 @@ import (
 
 // Map of structs keyed by file name
 var fileStructMap = map[string]interface{}{
-	"teams.csv":   &entity.Teams{},   // Pointers to structs
-	"players.csv": &entity.Players{}, // Pointers to structs
+	"teams.csv":         &entity.Teams{},        // Pointers to structs
+	"players.csv":       &entity.Players{},      // Pointers to structs
+	"players_draft.csv": &entity.PlayersDraft{}, // Pointers to structs
+	"team_details.csv":  &entity.TeamsDetails{}, // Pointers to structs
 }
 
 func ReaderCSV(csvName string) ([]string, []interface{}, error) {
@@ -52,6 +54,10 @@ func ReaderCSV(csvName string) ([]string, []interface{}, error) {
 		case "players.csv":
 			// Create a new Player struct instance
 			structInstance = &entity.Players{} // Use pointer for reflection
+		case "players_draft.csv":
+			structInstance = &entity.PlayersDraft{}
+		case "team_details.csv":
+			structInstance = &entity.TeamsDetails{}
 		default:
 			return nil, nil, fmt.Errorf("no struct defined for file: %s", csvName)
 		}
